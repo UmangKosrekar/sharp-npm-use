@@ -1,0 +1,18 @@
+<script>
+  let countDown = 7;
+
+  const countDownElement = document.getElementById("<%= countDownId %>");
+  const loginElement = document.getElementById("<%= loginBtnId %>");
+
+  const interval = setInterval(() => {
+    countDown--;
+    countDownElement.textContent = `Redirecting to Login Page in ${countDown} ${
+      countDown > 1 ? "seconds" : "second"
+    } ...`;
+
+    if (countDown == 0) {
+      clearInterval(interval);
+      window.location.href = loginElement.href; // Redirect to login page
+    }
+  }, 1000);
+</script>

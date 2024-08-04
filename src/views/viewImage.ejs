@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="alert alert-success text-center" role="alert">
+        <h1>Here is your Rendered image</h1>
+        <div class="container mt-5 mx-auto">
+            <div class="d-flex justify-content-center">
+                <%- include('downloadBtn.component.ejs') %>
+            </div>
+            <img width="512" height="512" src="<%- imageBuffer %>" class="rounded img-thumbnail" alt="Rendered Image" onContextMenu="return false;" >
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("download-btn").addEventListener("click", function () {
+        const link = document.createElement('a');
+        link.href = '<%- imageBuffer %>';
+        link.download = 'sharp_use.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    })
+</script>

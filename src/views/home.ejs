@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Resize Image using sharp</h1>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <!-- form -->
+      <form id="uploadForm" action="/upload-image" method="post" enctype="multipart/form-data">
+        <!--enctype="multipart/form-data"-->
+        <div class="mb-3 form-control px-4 gap-3 me-2">
+          <h5 for="myFile" class="form-label">Choose File</h5>
+          <input type="file" class="form-control" id="myFile" name="filename" required />
+          <input type="number" name="width" class="form-control" placeholder="Width..." required />
+          <input type="number" name="height" class="form-control" placeholder="Height..." required />
+
+          <!-- Resize Container -->
+          <div class="form-control px-4 gap-3 me-2">
+            <h5 class="form-label">Resize to:</h5>
+
+            <div id="radio-container" class="form-check">
+              <input type="radio" class="form-check-input" name="resizeTo" value="cover" checked />
+              <label for="solid-color-true" class="form-check-label">Cover</label>
+            </div>
+
+            <div id="radio-container" class="form-check">
+              <input type="radio" class="form-check-input" name="resizeTo" value="contain" />
+              <label for="solid-color-true" class="form-check-label">Contain</label>
+            </div>
+
+            <div id="radio-container" class="form-check">
+              <input type="radio" class="form-check-input" name="resizeTo" value="fill" />
+              <label for="solid-color-true" class="form-check-label">Fill</label>
+            </div>
+
+            <div id="radio-container" class="form-check">
+              <input type="radio" class="form-check-input" name="resizeTo" value="inside" />
+              <label for="solid-color-true" class="form-check-label">Inside</label>
+            </div>
+
+          </div>
+
+          <!-- Background -->
+          <div class="form-control px-4 gap-3 me-2">
+            <h5 class="form-label">Background:</h5>
+
+            <div id="radio-container" class="form-check">
+              <input type="radio" class="form-check-input" id="solid-color-true" name="solidColor" value="true"
+                checked />
+              <label for="solid-color-true" class="form-check-label">Solid Color</label>
+            </div>
+
+            <div id="radio-container" class="form-check">
+              <input type="radio" class="form-check-input" id="solid-color-false" name="solidColor" value="false" />
+              <label for="solid-color-false" class="form-check-label">Blur Image</label>
+            </div>
+
+            <input id="color-picker" type="color" name="color" class="form-control" style="display: inline" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg px-4 gap-3 me-2">Upload</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const colorPickerElement = document.getElementById("color-picker");
+  const solidColorTrueElement = document.getElementById("solid-color-true");
+  const solidColorFalseElement = document.getElementById("solid-color-false");
+
+  solidColorTrueElement.addEventListener("change", function () {
+    if (solidColorTrueElement.checked) {
+      colorPickerElement.style.display = "inline";
+    }
+  });
+
+  solidColorFalseElement.addEventListener("change", function () {
+    if (solidColorFalseElement.checked) {
+      colorPickerElement.style.display = "none";
+    }
+  });
+</script>

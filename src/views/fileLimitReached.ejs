@@ -1,0 +1,9 @@
+<div class="container mt-5">
+  <div class="alert alert-danger text-center" role="alert">
+    <h1>File Limit Exceeded</h1>
+    <p id="count-down">Redirecting to Login Page in 7 second...</p>
+    <a id="login-btn" href="/" class="btn btn-primary">Back to Main page</a>
+  </div>
+</div>
+
+<%- include('countDown.script.ejs', {countDownId:"count-down", loginBtnId:"login-btn"}) %>

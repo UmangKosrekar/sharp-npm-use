@@ -1,0 +1,10 @@
+<div class="container mt-5">
+  <div class="alert alert-danger text-center" role="alert">
+    <h1>404 NOT FOUND</h1>
+    <p>You reached the END</p>
+    <p id="count-down">Redirecting to Login Page in 7 second...</p>
+    <a id="login-btn" href="/" class="btn btn-primary">Back to Main page</a>
+  </div>
+</div>
+
+<%- include('countDown.script.ejs', {countDownId:"count-down", loginBtnId:"login-btn"}) %>

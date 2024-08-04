@@ -1,0 +1,24 @@
+{
+  "name": "sharp_npm_use",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "addAdminScript": "nodemon src/script/addAdmin.js",
+    "dev": "nodemon src/index.js",
+    "deploy": "firebase deploy --only functions"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-favicon": "^2.0.4",
+    "express-fileupload": "^1.5.1",
+    "morgan": "^1.10.0",
+    "sharp": "^0.33.4"
+  }
+}
