@@ -2,23 +2,36 @@
   "name": "sharp_npm_use",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
     "addAdminScript": "nodemon src/script/addAdmin.js",
     "dev": "nodemon src/index.js",
-    "deploy": "firebase deploy --only functions"
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",
     "express-favicon": "^2.0.4",
     "express-fileupload": "^1.5.1",
+    "firebase-functions": "^5.0.1",
     "morgan": "^1.10.0",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "firebase-admin": "^12.1.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true,
+  "engines": {
+    "node": "18"
   }
 }

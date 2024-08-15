@@ -1,11 +1,13 @@
+const { join } = require("path");
+require('dotenv').config({path: join(__dirname, '../.env') })
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const routes = require("./routes");
-const { join } = require("path");
 const favicon = require("express-favicon");
+const functions = require("firebase-functions");
 
 // Set up view engine and layout
 app.use(expressLayouts);
@@ -38,3 +40,5 @@ app.use("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+exports.api = functions.https.onRequest(app);
