@@ -3,3 +3,6 @@ package-lock.json
 firebase-debug.log
 /functions
 .env
+.firebaserc
+firebase.json
+ui-debug.log

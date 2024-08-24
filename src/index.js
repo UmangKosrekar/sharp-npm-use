@@ -1,10 +1,10 @@
 const { join } = require("path");
-require('dotenv').config({path: join(__dirname, '../.env') })
+require("dotenv").config({ path: join(__dirname, "../.env") });
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT_LOCAL || 3000;
 const routes = require("./routes");
 const favicon = require("express-favicon");
 const functions = require("firebase-functions");
@@ -25,6 +25,14 @@ app.use(
   })
 );
 
+// middleware to counter firebase functions auto suffixing
+app.use((req, res, next) => {
+  if (req.path.startsWith("/api")) {
+    req.path = req.path.slice(4); // Remove the first 4 characters ("/api")
+  }
+  next(); // Continue to the next middleware or route handler
+});
+
 app.use(require("morgan")("dev"));
 app.use(favicon(join(__dirname, "../assets/logo.png")));
 app.use("/assets", express.static(join(__dirname, "../assets")));
@@ -37,8 +45,8 @@ app.use("*", (req, res) => {
   return res.render(join(__dirname, "./views/notFound.ejs"), { title: "Home" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
 
 exports.api = functions.https.onRequest(app);
